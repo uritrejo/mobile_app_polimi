@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_app_polimi/providers/user_locations.dart';
+import 'package:mobile_app_polimi/widgets/image_input.dart';
 
 // ConsumerStatefulWidget allows us to consume from riverpod (notice ConsumerState as well)
 class AddLocationScreen extends ConsumerStatefulWidget {
@@ -23,7 +24,7 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
       return;
     }
 
-    // ??++ could add validation here
+    // ??++ could add validation here (there's a lot missing anyways)
 
     // ref is available due to the ConsumerXXX
     // this is how we add the new location to the provider
@@ -55,7 +56,13 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
                 decoration: const InputDecoration(labelText: 'Location Name'),
                 controller: _titleController,
               ),
-              const SizedBox(height: 20),
+
+              const SizedBox(height: 10), // add some space before the button
+
+              // ??++ Image Input incoming
+              const ImageInput(),
+
+              const SizedBox(height: 20), // add some space before the button
               ElevatedButton.icon(
                 onPressed: _saveLocation,
                 icon: const Icon(Icons.add),
