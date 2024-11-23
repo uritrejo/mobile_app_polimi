@@ -1,16 +1,15 @@
 # mobile_app_polimi
 
-A new Flutter project.
+Repository for the course: "Design and Implementation of Mobile Applications" by Luciano Baresi at Politecnico di Milano.
 
-## Getting Started
+## Team
 
-This project is a starting point for a Flutter application.
+TODO: add last names
 
-A few resources to get you started if this is your first Flutter project:
+- Léandre
+- Nicolas
+- Uri Trejo
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## Project Description
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+TODO: copy the description sent to the professor.
