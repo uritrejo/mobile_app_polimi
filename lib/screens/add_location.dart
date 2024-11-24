@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_app_polimi/providers/user_locations.dart';
@@ -16,11 +18,13 @@ class AddLocationScreen extends ConsumerStatefulWidget {
 class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
   final _titleController = TextEditingController();
 
+  File? _selectedImage;
+
   // ??++ I think I need to pass in the location?
   _saveLocation() {
     final enteredTitle = _titleController.text;
 
-    if (enteredTitle.isEmpty) {
+    if (enteredTitle.isEmpty || _selectedImage == null) {
       return;
     }
 
@@ -28,7 +32,9 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
 
     // ref is available due to the ConsumerXXX
     // this is how we add the new location to the provider
-    ref.read(userLocationsProvider.notifier).addLocation(enteredTitle);
+    ref
+        .read(userLocationsProvider.notifier)
+        .addLocation(enteredTitle, _selectedImage!);
 
     // to go back to the previous screen
     // we have direct access to the context since we're inside a state
@@ -60,7 +66,11 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
               const SizedBox(height: 10), // add some space before the button
 
               // ??++ Image Input incoming
-              const ImageInput(),
+              ImageInput(
+                onPickImage: (pickedImage) {
+                  _selectedImage = pickedImage;
+                },
+              ),
 
               const SizedBox(height: 20), // add some space before the button
               ElevatedButton.icon(
