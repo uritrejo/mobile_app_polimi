@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_app_polimi/providers/user_locations.dart';
+import 'package:mobile_app_polimi/widgets/image_input.dart';
 
 // ConsumerStatefulWidget allows us to consume from riverpod (notice ConsumerState as well)
 class AddLocationScreen extends ConsumerStatefulWidget {
@@ -15,19 +18,23 @@ class AddLocationScreen extends ConsumerStatefulWidget {
 class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
   final _titleController = TextEditingController();
 
+  File? _selectedImage;
+
   // ??++ I think I need to pass in the location?
   _saveLocation() {
     final enteredTitle = _titleController.text;
 
-    if (enteredTitle.isEmpty) {
+    if (enteredTitle.isEmpty || _selectedImage == null) {
       return;
     }
 
-    // ??++ could add validation here
+    // ??++ could add validation here (there's a lot missing anyways)
 
     // ref is available due to the ConsumerXXX
     // this is how we add the new location to the provider
-    ref.read(userLocationsProvider.notifier).addLocation(enteredTitle);
+    ref
+        .read(userLocationsProvider.notifier)
+        .addLocation(enteredTitle, _selectedImage!);
 
     // to go back to the previous screen
     // we have direct access to the context since we're inside a state
@@ -55,7 +62,17 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
                 decoration: const InputDecoration(labelText: 'Location Name'),
                 controller: _titleController,
               ),
-              const SizedBox(height: 20),
+
+              const SizedBox(height: 10), // add some space before the button
+
+              // ??++ Image Input incoming
+              ImageInput(
+                onPickImage: (pickedImage) {
+                  _selectedImage = pickedImage;
+                },
+              ),
+
+              const SizedBox(height: 20), // add some space before the button
               ElevatedButton.icon(
                 onPressed: _saveLocation,
                 icon: const Icon(Icons.add),

@@ -12,14 +12,15 @@ class LocationsDetailsScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text(location.title),
       ),
-      body: Center(
-        child: Text(
-          'Imaginary details of ${location.title}',
-          style: Theme.of(ctx)
-              .textTheme
-              .bodyLarge!
-              .copyWith(color: Theme.of(ctx).colorScheme.onSurface),
-        ),
+      body: Stack(
+        children: [
+          Image.file(
+            location.image,
+            fit: BoxFit.cover,
+            width: double.infinity,
+            height: double.infinity,
+          ),
+        ],
       ),
     );
   }

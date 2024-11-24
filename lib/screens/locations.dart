@@ -23,17 +23,18 @@ class LocationsScreen extends ConsumerWidget {
     final userLocations = ref.watch(userLocationsProvider);
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Sports Locations'),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.add),
-            onPressed: () => _onAddPressed(ctx),
-          )
-        ],
-      ),
-      // ??++ the const is only for now je pense
-      body: LocationsList(locations: userLocations),
-    );
+        appBar: AppBar(
+          title: const Text('Sports Locations'),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.add),
+              onPressed: () => _onAddPressed(ctx),
+            )
+          ],
+        ),
+        body: Padding(
+          padding: const EdgeInsets.all(5),
+          child: LocationsList(locations: userLocations),
+        ));
   }
 }

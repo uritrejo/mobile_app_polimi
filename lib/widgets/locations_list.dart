@@ -36,6 +36,10 @@ class LocationsList extends StatelessWidget {
       itemBuilder: (ctx, index) {
         final location = locations[index];
         return ListTile(
+          leading: CircleAvatar(
+            radius: 30,
+            backgroundImage: FileImage(location.image),
+          ),
           title: Text(
             location.title,
             // the !.copyWith(...) is to overwrite the default style only here
