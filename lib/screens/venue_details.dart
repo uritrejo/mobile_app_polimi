@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_app_polimi/models/location.dart';
+import 'package:mobile_app_polimi/models/venue.dart';
 
-class LocationsDetailsScreen extends StatelessWidget {
-  const LocationsDetailsScreen({super.key, required this.location});
+class VenueDetailsScreen extends StatelessWidget {
+  const VenueDetailsScreen({super.key, required this.venue});
 
-  final Location location;
+  final Venue venue;
 
   @override
   Widget build(BuildContext ctx) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(location.title),
+        title: Text(venue.title),
       ),
       body: Stack(
         children: [
           Image.file(
-            location.image,
+            venue.image,
             fit: BoxFit.cover,
             width: double.infinity,
             height: double.infinity,

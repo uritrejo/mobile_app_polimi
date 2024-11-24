@@ -1,28 +1,28 @@
 import 'package:flutter/material.dart';
 
-import 'package:mobile_app_polimi/models/location.dart';
-import 'package:mobile_app_polimi/screens/locations_details.dart';
+import 'package:mobile_app_polimi/models/venue.dart';
+import 'package:mobile_app_polimi/screens/venue_details.dart';
 
-class LocationsList extends StatelessWidget {
-  const LocationsList({super.key, required this.locations});
+class VenuesList extends StatelessWidget {
+  const VenuesList({super.key, required this.venues});
 
-  final List<Location> locations;
+  final List<Venue> venues;
 
-  void _onLocationTap(BuildContext ctx, Location location) {
-    // we push the LocationsDetailsScreen to the navigator stack (essentialy navigating to it)
+  void _onVenueTap(BuildContext ctx, Venue venue) {
+    // we push the VenueDetailsScreen to the navigator stack (essentialy navigating to it)
     Navigator.of(ctx).push(
       MaterialPageRoute(
-        builder: (ctx) => LocationsDetailsScreen(location: location),
+        builder: (ctx) => VenueDetailsScreen(venue: venue),
       ),
     );
   }
 
   @override
   Widget build(BuildContext ctx) {
-    if (locations.isEmpty) {
+    if (venues.isEmpty) {
       return Center(
         child: Text(
-          'No locations have been added yet.',
+          'No venues have been added yet.',
           style: Theme.of(ctx)
               .textTheme
               .bodyLarge!
@@ -32,23 +32,23 @@ class LocationsList extends StatelessWidget {
     }
 
     return ListView.builder(
-      itemCount: locations.length,
+      itemCount: venues.length,
       itemBuilder: (ctx, index) {
-        final location = locations[index];
+        final venue = venues[index];
         return ListTile(
           leading: CircleAvatar(
             radius: 30,
-            backgroundImage: FileImage(location.image),
+            backgroundImage: FileImage(venue.image),
           ),
           title: Text(
-            location.title,
+            venue.title,
             // the !.copyWith(...) is to overwrite the default style only here
             style: Theme.of(ctx)
                 .textTheme
                 .titleMedium!
                 .copyWith(color: Theme.of(ctx).colorScheme.onSurface),
           ),
-          onTap: () => _onLocationTap(ctx, location),
+          onTap: () => _onVenueTap(ctx, venue),
         );
       },
     );
