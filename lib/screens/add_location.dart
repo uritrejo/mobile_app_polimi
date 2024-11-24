@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_app_polimi/providers/user_locations.dart';
 import 'package:mobile_app_polimi/widgets/image_input.dart';
+import 'package:mobile_app_polimi/widgets/location_input.dart';
 
 // ConsumerStatefulWidget allows us to consume from riverpod (notice ConsumerState as well)
 class AddLocationScreen extends ConsumerStatefulWidget {
@@ -72,7 +73,12 @@ class _AddLocationScreenState extends ConsumerState<AddLocationScreen> {
                 },
               ),
 
+              const SizedBox(height: 10), // add some space before the button
+
+              LocationInput(),
+
               const SizedBox(height: 20), // add some space before the button
+
               ElevatedButton.icon(
                 onPressed: _saveLocation,
                 icon: const Icon(Icons.add),

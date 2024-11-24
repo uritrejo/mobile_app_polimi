@@ -51,5 +51,7 @@
 	<string>Take a picture for your sport location</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Take a video for your sport location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The location of your sports location</string>
 </dict>
 </plist>
