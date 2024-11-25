@@ -92,12 +92,14 @@ class _VenueInputState extends State<VenueInput> {
   }
 
   @override
-  Widget build(BuildContext ctx) {
+  Widget build(BuildContext context) {
     // the preview content is either the snapshot of the location or a message for empty location
     Widget previewContent =
         const Text('No Location Chosen', textAlign: TextAlign.center);
 
-    if (_pickedLocation != null) {
+    if (_isGettingLocation) {
+      previewContent = const Center(child: CircularProgressIndicator());
+    } else if (_pickedLocation != null) {
       previewContent = Image.network(locationImage,
           fit: BoxFit.cover, width: double.infinity, height: double.infinity);
     }

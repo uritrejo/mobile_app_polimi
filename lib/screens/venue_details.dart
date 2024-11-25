@@ -16,7 +16,7 @@ class VenueDetailsScreen extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext ctx) {
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(venue.title),
@@ -51,7 +51,7 @@ class VenueDetailsScreen extends StatelessWidget {
                       ),
                       child: Text(venue.location.address,
                           textAlign: TextAlign.center,
-                          style: Theme.of(ctx).textTheme.titleLarge)),
+                          style: Theme.of(context).textTheme.titleLarge)),
                 ],
               ))
         ],

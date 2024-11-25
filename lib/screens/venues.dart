@@ -18,7 +18,7 @@ class VenuesScreen extends ConsumerWidget {
   }
 
   @override
-  Widget build(BuildContext ctx, WidgetRef ref) {
+  Widget build(BuildContext context, WidgetRef ref) {
     // will rebuild whenever the provider's state/value changes (i.e. the list of venues of that user)
     final userVenues = ref.watch(userVenuesProvider);
 
@@ -28,7 +28,7 @@ class VenuesScreen extends ConsumerWidget {
           actions: [
             IconButton(
               icon: const Icon(Icons.add),
-              onPressed: () => _onAddPressed(ctx),
+              onPressed: () => _onAddPressed(context),
             )
           ],
         ),

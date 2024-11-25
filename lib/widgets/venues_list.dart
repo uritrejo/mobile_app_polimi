@@ -18,15 +18,15 @@ class VenuesList extends StatelessWidget {
   }
 
   @override
-  Widget build(BuildContext ctx) {
+  Widget build(BuildContext context) {
     if (venues.isEmpty) {
       return Center(
         child: Text(
           'No venues have been added yet.',
-          style: Theme.of(ctx)
+          style: Theme.of(context)
               .textTheme
               .bodyLarge!
-              .copyWith(color: Theme.of(ctx).colorScheme.onSurface),
+              .copyWith(color: Theme.of(context).colorScheme.onSurface),
         ),
       );
     }
