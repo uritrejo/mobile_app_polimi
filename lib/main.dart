@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_app_polimi/screens/locations.dart';
+import 'package:mobile_app_polimi/screens/venues.dart';
 
 final colorScheme = ColorScheme.fromSeed(
   brightness: Brightness.light,
@@ -35,11 +35,11 @@ class MyApp extends StatelessWidget {
 
   // This widget is the root of your application.
   @override
-  Widget build(BuildContext ctx) {
+  Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'My Sports App',
+      title: 'Our Sports Venues',
       theme: theme,
-      home: const LocationsScreen(),
+      home: const VenuesScreen(),
     );
   }
 }

@@ -46,10 +46,12 @@
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Pick an image for your sport location</string>
+	<string>Pick an image for your sport venue</string>
 	<key>NSCameraUsageDescription</key>
-	<string>Take a picture for your sport location</string>
+	<string>Take a picture for your sport venue</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Take a video for your sport location</string>
+	<string>Take a video for your sport venue</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>The venue of your sports venue</string>
 </dict>
 </plist>
