@@ -9,7 +9,9 @@ import 'package:mobile_app_polimi/models/venue.dart';
 const String apiKey = 'AIzaSyCxHeFOR5O5_LlcXfEERcwdqZNXeErH8vo';
 
 class VenueInput extends StatefulWidget {
-  VenueInput({super.key});
+  const VenueInput({super.key, required this.onSelectLocation});
+
+  final void Function(VenueLocation location) onSelectLocation;
 
   @override
   State<StatefulWidget> createState() {
@@ -82,6 +84,8 @@ class _VenueInputState extends State<VenueInput> {
         VenueLocation(lattitude: lat, longitude: lng, address: address);
     _isGettingLocation = false;
     setState(() {});
+
+    widget.onSelectLocation(_pickedLocation!);
 
     print(
         '??++ Location: ${locationData.latitude}, ${locationData.longitude}, $address');

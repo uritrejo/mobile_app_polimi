@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobile_app_polimi/models/venue.dart';
 import 'package:mobile_app_polimi/providers/user_venues.dart';
 import 'package:mobile_app_polimi/widgets/image_input.dart';
 import 'package:mobile_app_polimi/widgets/venue_input.dart';
@@ -18,13 +19,15 @@ class AddVenueScreen extends ConsumerStatefulWidget {
 
 class _AddVenueScreenState extends ConsumerState<AddVenueScreen> {
   final _titleController = TextEditingController();
-
   File? _selectedImage;
+  VenueLocation? _selectedLocation;
 
   _saveVenue() {
     final enteredTitle = _titleController.text;
 
-    if (enteredTitle.isEmpty || _selectedImage == null) {
+    if (enteredTitle.isEmpty ||
+        _selectedImage == null ||
+        _selectedLocation == null) {
       return;
     }
 
@@ -32,7 +35,7 @@ class _AddVenueScreenState extends ConsumerState<AddVenueScreen> {
     // this is how we add the new venue to the provider
     ref
         .read(userVenuesProvider.notifier)
-        .addVenue(enteredTitle, _selectedImage!);
+        .addVenue(enteredTitle, _selectedImage!, _selectedLocation!);
 
     // to go back to the previous screen
     // we have direct access to the context since we're inside a state
@@ -51,7 +54,6 @@ class _AddVenueScreenState extends ConsumerState<AddVenueScreen> {
       appBar: AppBar(
         title: const Text('Add New Venue'),
       ),
-      // TODO: here we could use a form to get all the values
       body: SingleChildScrollView(
           padding: const EdgeInsets.all(20),
           child: Column(
@@ -71,7 +73,11 @@ class _AddVenueScreenState extends ConsumerState<AddVenueScreen> {
 
               const SizedBox(height: 10), // add some space before the button
 
-              VenueInput(),
+              VenueInput(
+                onSelectLocation: (location) {
+                  _selectedLocation = location;
+                },
+              ),
 
               const SizedBox(height: 20), // add some space before the button
 

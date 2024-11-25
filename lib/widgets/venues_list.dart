@@ -48,6 +48,13 @@ class VenuesList extends StatelessWidget {
                 .titleMedium!
                 .copyWith(color: Theme.of(ctx).colorScheme.onSurface),
           ),
+          subtitle: Text(
+            venue.location.address,
+            style: Theme.of(ctx)
+                .textTheme
+                .bodySmall!
+                .copyWith(color: Theme.of(ctx).colorScheme.onSurface),
+          ),
           onTap: () => _onVenueTap(ctx, venue),
         );
       },
